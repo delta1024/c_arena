@@ -2,9 +2,9 @@
 #define _ARENA_ALLOCATOR_H__
 #include <stdalign.h>
 #include <stddef.h>
+typedef struct arena_block arena_block;
 typedef struct arena_alloc {
-	char *beg;
-	char *end;
+	arena_block *blocks;
 } arena_alloc;
 arena_alloc arena_init();
 void *arena_raw_malloc(arena_alloc *a, ptrdiff_t size, ptrdiff_t align, ptrdiff_t count);
